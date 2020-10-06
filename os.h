@@ -11,4 +11,8 @@ void OS_Add_Thread( void (*OSTask0Ptr)(void),
 	                  void (*OSTask1Ptr)(void),
 		                void (*OSTask2Ptr)(void));
 void OS_Launch(uint32 OSTimeSlice);
+										
+void OS_Semaphore_Init(uint32 *SemaphoreCount , uint32 SemaphoreVal);
+void OS_Semaphore_Wait(uint32 *SemaphoreCount);
+void OS_Semaphore_Signal(uint32 *SemaphoreCount);
 #endif

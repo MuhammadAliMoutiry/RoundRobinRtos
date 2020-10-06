@@ -80,3 +80,25 @@ void OS_Launch(uint32 OSTimeSlice){
 }
 
 
+void OS_Semaphore_Init(uint32 *SemaphoreCount , uint32 SemaphoreVal){
+  *SemaphoreCount = SemaphoreVal;
+}
+
+void OS_Semaphore_Wait(uint32 *SemaphoreCount){
+  OS_ASM_Disable_Interrupts();
+	while(*SemaphoreCount == 0){
+		OS_ASM_Enable_Interrupts();
+		OS_ASM_Disable_Interrupts();
+	}
+	(*SemaphoreCount) = (*SemaphoreCount) -1;
+	OS_ASM_Enable_Interrupts();
+}
+
+void OS_Semaphore_Signal(uint32 *SemaphoreCount){
+  OS_ASM_Disable_Interrupts();
+	(*SemaphoreCount) = (*SemaphoreCount) +1;
+	OS_ASM_Enable_Interrupts();
+}
+
+
+

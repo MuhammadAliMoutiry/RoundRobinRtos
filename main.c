@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include "os.h"
 #include "GPIO.h"
-#define TIMESLICE               OS_TIME_2MS    // thread switch time in system time units
+#define TIMESLICE               OS_TIME_1MS    // thread switch time in system time units
 
 uint32_t Count1;   // number of times thread1 loops
 uint32_t Count2;   // number of times thread2 loops
@@ -22,33 +22,53 @@ uint32_t Count3;   // number of times thread3 loops
 #define SYSCTL_PRGPIO_R         (*((volatile uint32_t *)0x400FEA08))
 #define SYSCTL_PRGPIO_R3        0x00000008  // GPIO Port D Peripheral Ready
 
+
+uint32 sem ;
+
+
 void Task1(void){
   Count1 = 0;
-  for(;;){
-    Count1++;
-    GPIO_PORTD1 ^= 0x02;      // toggle PD1
-		delay_100ms(5);
+	for(;;){
+		OS_Semaphore_Wait(&sem);
+    led(LED_GREEN);
+		delay_100ms(2);
+		led(LED_OFF);
+		delay_100ms(2);
+		OS_Semaphore_Signal(&sem);
+		led(LED_OFF);
+		delay_100ms(2);
   }
+  
 }
 void Task2(void){
   Count2 = 0;
   for(;;){
-    Count2++;
-    GPIO_PORTD2 ^= 0x04;      // toggle PD2
-		delay_100ms(5);
+    Count1++;
+    GPIO_PORTD1 ^= 0x02;      // toggle PD1
+		delay_100ms(2);
   }
 }
 void Task3(void){
   Count3 = 0;
   for(;;){
-    Count3++;
-    GPIO_PORTD3 ^= 0x08;      // toggle PD3
-		delay_100ms(5);
+		GPIO_PORTD2 ^= 0x04;      // toggle PD2
+		delay_100ms(2);
+    OS_Semaphore_Wait(&sem);
+    led(LED_RED);
+		delay_100ms(2);
+		led(LED_OFF);
+		delay_100ms(2);
+		OS_Semaphore_Signal(&sem);
 
   }
 }
 int main(void){
-  OS_Init();           // initialize, disable interrupts, 50 MHz
+  OS_Init();  
+  
+	OS_Semaphore_Init(&sem,1);
+	PortF_Init();
+
+	// initialize, disable interrupts, 50 MHz
   SYSCTL_RCGCGPIO_R |= 0x08;            // activate clock for Port D
   while((SYSCTL_PRGPIO_R&0x08) == 0){}; // allow time for clock to stabilize
   GPIO_PORTD_DIR_R |= 0x0E;             // make PD3-1 out
