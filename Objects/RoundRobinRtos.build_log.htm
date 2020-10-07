@@ -51,13 +51,25 @@ os.c(4): warning: In file included from...
 #endif
       ^
 os.c(4): warning: In file included from...
-./os.h(18): warning: no newline at end of file [-Wnewline-eof]
+./os.h(21): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-os.c(33): warning: no previous prototype for function 'OS_Thread_Stack_Init' [-Wmissing-prototypes]
+os.c(27): warning: no previous extern declaration for non-static variable 'mailSendSemaphore' [-Wmissing-variable-declarations]
+uint32 mailSendSemaphore =0 ;
+       ^
+os.c(27): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 mailSendSemaphore =0 ;
+^
+os.c(28): warning: no previous extern declaration for non-static variable 'mailAckSemaphore' [-Wmissing-variable-declarations]
+uint32 mailAckSemaphore  =0 ;
+       ^
+os.c(28): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 mailAckSemaphore  =0 ;
+^
+os.c(37): warning: no previous prototype for function 'OS_Thread_Stack_Init' [-Wmissing-prototypes]
 void OS_Thread_Stack_Init(uint8 threadIndx){
      ^
-os.c(33): note: declare 'static' if the function is not intended to be used outside of this translation unit
+os.c(37): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void OS_Thread_Stack_Init(uint8 threadIndx){
 ^
 static 
@@ -79,7 +91,13 @@ OSThreadTCB_t *OSRunningThreadPtr;
 os.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 OSThreadTCB_t *OSRunningThreadPtr;
 ^
-6 warnings generated.
+os.c(26): warning: no previous extern declaration for non-static variable 'mail' [-Wmissing-variable-declarations]
+uint32 mail;
+       ^
+os.c(26): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 mail;
+^
+9 warnings generated.
 compiling os.c...
 assembling osasm.s...
 main.c(4): warning: In file included from...
@@ -88,46 +106,64 @@ main.c(4): warning: In file included from...
 #endif
       ^
 main.c(4): warning: In file included from...
-./os.h(18): warning: no newline at end of file [-Wnewline-eof]
+./os.h(21): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-main.c(29): warning: no previous prototype for function 'Task1' [-Wmissing-prototypes]
+main.c(27): warning: no previous extern declaration for non-static variable 'arr' [-Wmissing-variable-declarations]
+uint32 arr[]={0x00,0x02,0x04,0x06,0x08};
+       ^
+main.c(27): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 arr[]={0x00,0x02,0x04,0x06,0x08};
+^
+main.c(28): warning: no previous extern declaration for non-static variable 'count' [-Wmissing-variable-declarations]
+uint32 count =0;
+       ^
+main.c(28): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 count =0;
+^
+main.c(29): warning: no previous extern declaration for non-static variable 'data' [-Wmissing-variable-declarations]
+uint32 data=0;
+       ^
+main.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 data=0;
+^
+main.c(30): warning: no previous prototype for function 'Task1' [-Wmissing-prototypes]
 void Task1(void){
      ^
-main.c(29): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(30): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void Task1(void){
 ^
 static 
-main.c(29): warning: function 'Task1' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(30): warning: function 'Task1' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void Task1(void){
                 ^
-main.c(43): warning: no previous prototype for function 'Task2' [-Wmissing-prototypes]
+main.c(39): warning: no previous prototype for function 'Task2' [-Wmissing-prototypes]
 void Task2(void){
      ^
-main.c(43): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(39): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void Task2(void){
 ^
 static 
-main.c(43): warning: function 'Task2' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(39): warning: function 'Task2' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void Task2(void){
                 ^
-main.c(51): warning: no previous prototype for function 'Task3' [-Wmissing-prototypes]
+main.c(47): warning: no previous prototype for function 'Task3' [-Wmissing-prototypes]
 void Task3(void){
      ^
-main.c(51): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(47): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void Task3(void){
 ^
 static 
-main.c(51): warning: function 'Task3' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(47): warning: function 'Task3' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void Task3(void){
                 ^
-main.c(73): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+main.c(64): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
   while((SYSCTL_PRGPIO_R&0x08) == 0){}; // allow time for clock to stabilize
                                       ^
-main.c(75): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+main.c(66): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
   GPIO_PORTD_AFSEL_R &= ~0x0E;          // disable alt funct on PD3-1
                      ~~ ^~~~~
-main.c(79): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+main.c(70): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
   GPIO_PORTD_AMSEL_R &= ~0x0E;          // disable analog functionality on PD3-1
                      ~~ ^~~~~
 main.c(8): warning: no previous extern declaration for non-static variable 'Count1' [-Wmissing-variable-declarations]
@@ -154,7 +190,7 @@ uint32 sem ;
 main.c(26): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint32 sem ;
 ^
-15 warnings generated.
+18 warnings generated.
 compiling main.c...
 assembling startup_TM4C123.s...
 RTE/Device/TM4C123GH6PM/system_TM4C123.c(13): warning: In file included from...
@@ -294,8 +330,8 @@ C:/Users/Muhammad Ali Moutiry/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device
 44 warnings generated.
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=1736 RO-data=636 RW-data=0 ZI-data=1856  
-".\Objects\RoundRobinRtos.axf" - 0 Error(s), 70 Warning(s).
+Program Size: Code=1788 RO-data=652 RW-data=20 ZI-data=1872  
+".\Objects\RoundRobinRtos.axf" - 0 Error(s), 76 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -324,7 +360,7 @@ Package Vendor: Keil
       Source file:   Device\Source\system_TM4C123.c
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Include file:  Device\Include\TM4C123\TM4C123.h
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

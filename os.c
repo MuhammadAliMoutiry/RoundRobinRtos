@@ -22,7 +22,11 @@ void   OS_ASM_Enable_Interrupts (void          );
 uint32 StartCritical            (void          );
 void   EndCritical              (uint32 primask);
 void   OS_Start                 (void          );   
-
+/************************************************************************************************/
+uint32 mail;
+uint32 mailSendSemaphore =0 ;
+uint32 mailAckSemaphore  =0 ;
+/************************************************************************************************/
 void OS_Init(void){
   OS_ASM_Disable_Interrupts();
 	PLL_Init();          // set processor clock to 50 MHz
@@ -100,5 +104,17 @@ void OS_Semaphore_Signal(uint32 *SemaphoreCount){
 	OS_ASM_Enable_Interrupts();
 }
 
+void OS_Send_mail(uint32 data){
+   mail = data ;
+	OS_Semaphore_Signal(&mailSendSemaphore);
+	OS_Semaphore_Wait(&mailAckSemaphore);
+}
 
+uint32 OS_Receive_Mail(void){
+ uint32 data;
+ OS_Semaphore_Wait(&mailSendSemaphore);
+	data = mail ;
+	OS_Semaphore_Signal(&mailAckSemaphore);
+  return data;
+}
 

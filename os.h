@@ -15,4 +15,7 @@ void OS_Launch(uint32 OSTimeSlice);
 void OS_Semaphore_Init(uint32 *SemaphoreCount , uint32 SemaphoreVal);
 void OS_Semaphore_Wait(uint32 *SemaphoreCount);
 void OS_Semaphore_Signal(uint32 *SemaphoreCount);
+void OS_Send_mail(uint32 data);
+uint32 OS_Receive_Mail(void);
+										
 #endif

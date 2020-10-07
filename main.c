@@ -24,19 +24,15 @@ uint32_t Count3;   // number of times thread3 loops
 
 
 uint32 sem ;
-
-
+uint32 arr[]={0x00,0x02,0x04,0x06,0x08};
+uint32 count =0;
+uint32 data=0;
 void Task1(void){
   Count1 = 0;
 	for(;;){
-		OS_Semaphore_Wait(&sem);
-    led(LED_GREEN);
-		delay_100ms(2);
-		led(LED_OFF);
-		delay_100ms(2);
-		OS_Semaphore_Signal(&sem);
-		led(LED_OFF);
-		delay_100ms(2);
+       if(count >4)count=0;
+		OS_Send_mail(arr[count]);
+		count++;
   }
   
 }
@@ -51,14 +47,9 @@ void Task2(void){
 void Task3(void){
   Count3 = 0;
   for(;;){
-		GPIO_PORTD2 ^= 0x04;      // toggle PD2
-		delay_100ms(2);
-    OS_Semaphore_Wait(&sem);
-    led(LED_RED);
-		delay_100ms(2);
-		led(LED_OFF);
-		delay_100ms(2);
-		OS_Semaphore_Signal(&sem);
+  data = OS_Receive_Mail();
+		led(data);
+		delay_100ms(5);
 
   }
 }
