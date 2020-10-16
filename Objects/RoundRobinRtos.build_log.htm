@@ -73,9 +73,6 @@ os.c(61): note: declare 'static' if the function is not intended to be used outs
 void OS_Thread_Stack_Init(uint8 threadIndx){
 ^
 static 
-os.c(212): warning: '/*' within block comment [-Wcomment]
-        /*while((OSRunningThreadPtr->OSThreadBlocked)/*||(OSRunningThreadPtr->OSThreadSleep)){
-                                                     ^
 os.c(210): warning: no previous prototype for function 'OS_Schedular' [-Wmissing-prototypes]
 void OS_Schedular(void){
      ^
@@ -143,7 +140,7 @@ int32 OSFIFOMutex      ; // execlusive access to FIFO
 os.c(41): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 int32 OSFIFOMutex      ; // execlusive access to FIFO
 ^
-17 warnings generated.
+16 warnings generated.
 compiling os.c...
 assembling osasm.s...
 main.c(4): warning: In file included from...
@@ -370,8 +367,8 @@ C:/Users/Muhammad Ali Moutiry/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device
 44 warnings generated.
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=1888 RO-data=652 RW-data=20 ZI-data=1880  
-".\Objects\RoundRobinRtos.axf" - 0 Error(s), 83 Warning(s).
+Program Size: Code=1896 RO-data=652 RW-data=20 ZI-data=1880  
+".\Objects\RoundRobinRtos.axf" - 0 Error(s), 82 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -400,7 +397,7 @@ Package Vendor: Keil
       Source file:   Device\Source\system_TM4C123.c
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Include file:  Device\Include\TM4C123\TM4C123.h
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

@@ -11,7 +11,7 @@
 typedef struct OSThreadTCB{
    uint32 *OSThreadSP;
 	 int32  *OSThreadBlocked;
-  // int32  OSThreadSleep  ;
+   //int32  OSThreadSleep  ;
    struct OSThreadTCB *OSNextThread;	
 }OSThreadTCB_t;
 
@@ -209,14 +209,14 @@ void OS_Sleep(int32 SleepTimeMilliSec){
 /*******************************************************************/
 void OS_Schedular(void){
   OSRunningThreadPtr = OSRunningThreadPtr->OSNextThread;
-	/*while((OSRunningThreadPtr->OSThreadBlocked)/*||(OSRunningThreadPtr->OSThreadSleep)){
+	while((OSRunningThreadPtr->OSThreadBlocked)){
 		OSRunningThreadPtr = OSRunningThreadPtr ->OSNextThread;
-	}*/
+	}
 }
 /**************************************************************************************/
 /****************  FIFO FUNCTIONS *****************************************************/
 /**************************************************************************************/
-/*void OS_FIFO_Init(void){
+void OS_FIFO_Init(void){
 	OSFIFOGetPtr = OSFIFOPutPtr = &OSFIFO[0];
 	OS_Semaphore_Init(&OSFIFOCurrentSize , 0            );
 	OS_Semaphore_Init(&OSFIFORoomLeft    , OS_FIFO_SIZE );
@@ -247,4 +247,4 @@ uint32 OS_FIFO_Get(void){
 	OS_Blocking_Semaphore_Signal(&OSFIFOMutex);
 	OS_Blocking_Semaphore_Signal(&OSFIFORoomLeft);
 	return data;
-}*/
+}
