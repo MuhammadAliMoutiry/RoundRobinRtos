@@ -10,7 +10,7 @@
 
 typedef struct OSThreadTCB{
    uint32 *OSThreadSP;
-	 int32  OSThreadBlocked;
+	 int32  *OSThreadBlocked;
   // int32  OSThreadSleep  ;
    struct OSThreadTCB *OSNextThread;	
 }OSThreadTCB_t;
@@ -160,7 +160,7 @@ void OS_Blocking_Semaphore_Wait(int32 *SemaphoreCount){
   OS_ASM_Disable_Interrupts();
 	(*SemaphoreCount) = (*SemaphoreCount) -1;
 	if(*SemaphoreCount < 0){
-		OSRunningThreadPtr->OSThreadBlocked = *SemaphoreCount;
+		OSRunningThreadPtr->OSThreadBlocked = SemaphoreCount;
 		OS_ASM_Enable_Interrupts();
 		OS_Suspend();
 	}
@@ -173,7 +173,7 @@ void OS_Blocking_Semaphore_Signal(int32 *SemaphoreCount){
 	(*SemaphoreCount) = (*SemaphoreCount) +1;
 	if((*SemaphoreCount) <=0){
 		pt = OSRunningThreadPtr->OSNextThread;
-	 while(pt->OSThreadBlocked != *SemaphoreCount){
+	 while(pt->OSThreadBlocked != SemaphoreCount){
 			pt = pt->OSNextThread;
 		}
 		pt->OSThreadBlocked = 0;
