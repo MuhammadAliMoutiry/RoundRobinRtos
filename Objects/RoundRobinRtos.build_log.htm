@@ -22,12 +22,11 @@ Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
 D:\Muhammad_Ali\My_projects\Programming\Microcontroller\ARM cortex M4\RoundRobinRtos\RoundRobinRtos.uvprojx
-Project File Date:  10/06/2020
+Project File Date:  10/14/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.14', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-compiling GPIO.c...
 PLL.c(57): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
   SYSCTL_RCC_R &= ~SYSCTL_RCC_XTAL_M;   // clear XTAL field
                ~~ ^~~~~~~~~~~~~~~~~~
@@ -45,125 +44,172 @@ PLL.c(70): warning: implicit conversion changes signedness: 'int' to 'unsigned i
                 ~~ ^~~~~~~~~~~~~~~~~~~~
 5 warnings generated.
 compiling PLL.c...
+compiling GPIO.c...
 os.c(4): warning: In file included from...
 ./os.h(4): warning: In file included from...
-./os_types.h(11): warning: no newline at end of file [-Wnewline-eof]
+./os_types.h(12): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
 os.c(4): warning: In file included from...
-./os.h(21): warning: no newline at end of file [-Wnewline-eof]
+./os.h(42): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-os.c(27): warning: no previous extern declaration for non-static variable 'mailSendSemaphore' [-Wmissing-variable-declarations]
-uint32 mailSendSemaphore =0 ;
-       ^
-os.c(27): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32 mailSendSemaphore =0 ;
+os.c(30): warning: no previous extern declaration for non-static variable 'mailSendSemaphore' [-Wmissing-variable-declarations]
+int32   mailSendSemaphore =0 ;
+        ^
+os.c(30): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int32   mailSendSemaphore =0 ;
 ^
-os.c(28): warning: no previous extern declaration for non-static variable 'mailAckSemaphore' [-Wmissing-variable-declarations]
-uint32 mailAckSemaphore  =0 ;
-       ^
-os.c(28): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32 mailAckSemaphore  =0 ;
+os.c(31): warning: no previous extern declaration for non-static variable 'mailAckSemaphore' [-Wmissing-variable-declarations]
+int32   mailAckSemaphore  =0 ;
+        ^
+os.c(31): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int32   mailAckSemaphore  =0 ;
 ^
-os.c(37): warning: no previous prototype for function 'OS_Thread_Stack_Init' [-Wmissing-prototypes]
+os.c(61): warning: no previous prototype for function 'OS_Thread_Stack_Init' [-Wmissing-prototypes]
 void OS_Thread_Stack_Init(uint8 threadIndx){
      ^
-os.c(37): note: declare 'static' if the function is not intended to be used outside of this translation unit
+os.c(61): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void OS_Thread_Stack_Init(uint8 threadIndx){
 ^
 static 
-os.c(15): warning: no previous extern declaration for non-static variable 'OSThreadsTCBs' [-Wmissing-variable-declarations]
+os.c(212): warning: '/*' within block comment [-Wcomment]
+        /*while((OSRunningThreadPtr->OSThreadBlocked)/*||(OSRunningThreadPtr->OSThreadSleep)){
+                                                     ^
+os.c(210): warning: no previous prototype for function 'OS_Schedular' [-Wmissing-prototypes]
+void OS_Schedular(void){
+     ^
+os.c(210): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void OS_Schedular(void){
+^
+static 
+os.c(18): warning: no previous extern declaration for non-static variable 'OSThreadsTCBs' [-Wmissing-variable-declarations]
 OSThreadTCB_t OSThreadsTCBs[OS_NUM_THREADS];
               ^
-os.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+os.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 OSThreadTCB_t OSThreadsTCBs[OS_NUM_THREADS];
 ^
-os.c(16): warning: no previous extern declaration for non-static variable 'OSThreadsStacks' [-Wmissing-variable-declarations]
+os.c(19): warning: no previous extern declaration for non-static variable 'OSThreadsStacks' [-Wmissing-variable-declarations]
 uint32        OSThreadsStacks[OS_NUM_THREADS][OS_THREAD_STACK_SIZE];
               ^
-os.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+os.c(19): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint32        OSThreadsStacks[OS_NUM_THREADS][OS_THREAD_STACK_SIZE];
 ^
-os.c(18): warning: no previous extern declaration for non-static variable 'OSRunningThreadPtr' [-Wmissing-variable-declarations]
+os.c(21): warning: no previous extern declaration for non-static variable 'OSRunningThreadPtr' [-Wmissing-variable-declarations]
 OSThreadTCB_t *OSRunningThreadPtr;
                ^
-os.c(18): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+os.c(21): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 OSThreadTCB_t *OSRunningThreadPtr;
 ^
-os.c(26): warning: no previous extern declaration for non-static variable 'mail' [-Wmissing-variable-declarations]
-uint32 mail;
-       ^
-os.c(26): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32 mail;
+os.c(29): warning: no previous extern declaration for non-static variable 'mail' [-Wmissing-variable-declarations]
+uint32  mail                 ;
+        ^
+os.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32  mail                 ;
 ^
-9 warnings generated.
+os.c(35): warning: no previous extern declaration for non-static variable 'OSFIFOPutPtr' [-Wmissing-variable-declarations]
+uint32 volatile *OSFIFOPutPtr ;
+                 ^
+os.c(35): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 volatile *OSFIFOPutPtr ;
+^
+os.c(36): warning: no previous extern declaration for non-static variable 'OSFIFOGetPtr' [-Wmissing-variable-declarations]
+uint32 volatile *OSFIFOGetPtr ;
+                 ^
+os.c(36): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 volatile *OSFIFOGetPtr ;
+^
+os.c(37): warning: no previous extern declaration for non-static variable 'OSFIFO' [-Wmissing-variable-declarations]
+uint32 volatile OSFIFO[OS_FIFO_SIZE];
+                ^
+os.c(37): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 volatile OSFIFO[OS_FIFO_SIZE];
+^
+os.c(39): warning: no previous extern declaration for non-static variable 'OSFIFOCurrentSize' [-Wmissing-variable-declarations]
+int32 OSFIFOCurrentSize; // 0 means FIFO is empty
+      ^
+os.c(39): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int32 OSFIFOCurrentSize; // 0 means FIFO is empty
+^
+os.c(40): warning: no previous extern declaration for non-static variable 'OSFIFORoomLeft' [-Wmissing-variable-declarations]
+int32 OSFIFORoomLeft   ; // 0 means FIFO is FUll
+      ^
+os.c(40): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int32 OSFIFORoomLeft   ; // 0 means FIFO is FUll
+^
+os.c(41): warning: no previous extern declaration for non-static variable 'OSFIFOMutex' [-Wmissing-variable-declarations]
+int32 OSFIFOMutex      ; // execlusive access to FIFO
+      ^
+os.c(41): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int32 OSFIFOMutex      ; // execlusive access to FIFO
+^
+17 warnings generated.
 compiling os.c...
 assembling osasm.s...
 main.c(4): warning: In file included from...
 ./os.h(4): warning: In file included from...
-./os_types.h(11): warning: no newline at end of file [-Wnewline-eof]
+./os_types.h(12): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
 main.c(4): warning: In file included from...
-./os.h(21): warning: no newline at end of file [-Wnewline-eof]
+./os.h(42): warning: no newline at end of file [-Wnewline-eof]
 #endif
       ^
-main.c(27): warning: no previous extern declaration for non-static variable 'arr' [-Wmissing-variable-declarations]
-uint32 arr[]={0x00,0x02,0x04,0x06,0x08};
+main.c(26): warning: no previous extern declaration for non-static variable 'arr' [-Wmissing-variable-declarations]
+uint32 arr[]={0x02,0x04,0x06,0x08,0x00};
+       ^
+main.c(26): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint32 arr[]={0x02,0x04,0x06,0x08,0x00};
+^
+main.c(27): warning: no previous extern declaration for non-static variable 'count' [-Wmissing-variable-declarations]
+uint32 count =0;
        ^
 main.c(27): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32 arr[]={0x00,0x02,0x04,0x06,0x08};
-^
-main.c(28): warning: no previous extern declaration for non-static variable 'count' [-Wmissing-variable-declarations]
 uint32 count =0;
+^
+main.c(28): warning: no previous extern declaration for non-static variable 'data' [-Wmissing-variable-declarations]
+uint32 data=0;
        ^
 main.c(28): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32 count =0;
-^
-main.c(29): warning: no previous extern declaration for non-static variable 'data' [-Wmissing-variable-declarations]
-uint32 data=0;
-       ^
-main.c(29): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint32 data=0;
 ^
-main.c(30): warning: no previous prototype for function 'Task1' [-Wmissing-prototypes]
+main.c(29): warning: no previous prototype for function 'Task1' [-Wmissing-prototypes]
 void Task1(void){
      ^
-main.c(30): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(29): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void Task1(void){
 ^
 static 
-main.c(30): warning: function 'Task1' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(29): warning: function 'Task1' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void Task1(void){
                 ^
-main.c(39): warning: no previous prototype for function 'Task2' [-Wmissing-prototypes]
+main.c(38): warning: no previous prototype for function 'Task2' [-Wmissing-prototypes]
 void Task2(void){
      ^
-main.c(39): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(38): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void Task2(void){
 ^
 static 
-main.c(39): warning: function 'Task2' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(38): warning: function 'Task2' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void Task2(void){
                 ^
-main.c(47): warning: no previous prototype for function 'Task3' [-Wmissing-prototypes]
+main.c(46): warning: no previous prototype for function 'Task3' [-Wmissing-prototypes]
 void Task3(void){
      ^
-main.c(47): note: declare 'static' if the function is not intended to be used outside of this translation unit
+main.c(46): note: declare 'static' if the function is not intended to be used outside of this translation unit
 void Task3(void){
 ^
 static 
-main.c(47): warning: function 'Task3' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
+main.c(46): warning: function 'Task3' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
 void Task3(void){
                 ^
-main.c(64): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
+main.c(61): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
   while((SYSCTL_PRGPIO_R&0x08) == 0){}; // allow time for clock to stabilize
                                       ^
-main.c(66): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+main.c(63): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
   GPIO_PORTD_AFSEL_R &= ~0x0E;          // disable alt funct on PD3-1
                      ~~ ^~~~~
-main.c(70): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+main.c(67): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
   GPIO_PORTD_AMSEL_R &= ~0x0E;          // disable analog functionality on PD3-1
                      ~~ ^~~~~
 main.c(8): warning: no previous extern declaration for non-static variable 'Count1' [-Wmissing-variable-declarations]
@@ -184,13 +230,7 @@ uint32_t Count3;   // number of times thread3 loops
 main.c(10): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 uint32_t Count3;   // number of times thread3 loops
 ^
-main.c(26): warning: no previous extern declaration for non-static variable 'sem' [-Wmissing-variable-declarations]
-uint32 sem ;
-       ^
-main.c(26): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint32 sem ;
-^
-18 warnings generated.
+17 warnings generated.
 compiling main.c...
 assembling startup_TM4C123.s...
 RTE/Device/TM4C123GH6PM/system_TM4C123.c(13): warning: In file included from...
@@ -330,8 +370,8 @@ C:/Users/Muhammad Ali Moutiry/AppData/Local/Arm/Packs/Keil/TM4C_DFP/1.1.0/Device
 44 warnings generated.
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=1788 RO-data=652 RW-data=20 ZI-data=1872  
-".\Objects\RoundRobinRtos.axf" - 0 Error(s), 76 Warning(s).
+Program Size: Code=1888 RO-data=652 RW-data=20 ZI-data=1880  
+".\Objects\RoundRobinRtos.axf" - 0 Error(s), 83 Warning(s).
 
 <h2>Software Packages used:</h2>
 

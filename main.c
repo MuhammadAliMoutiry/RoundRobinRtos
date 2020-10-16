@@ -23,8 +23,7 @@ uint32_t Count3;   // number of times thread3 loops
 #define SYSCTL_PRGPIO_R3        0x00000008  // GPIO Port D Peripheral Ready
 
 
-uint32 sem ;
-uint32 arr[]={0x00,0x02,0x04,0x06,0x08};
+uint32 arr[]={0x02,0x04,0x06,0x08,0x00};
 uint32 count =0;
 uint32 data=0;
 void Task1(void){
@@ -55,8 +54,6 @@ void Task3(void){
 }
 int main(void){
   OS_Init();  
-  
-	OS_Semaphore_Init(&sem,1);
 	PortF_Init();
 
 	// initialize, disable interrupts, 50 MHz

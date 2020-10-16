@@ -10,6 +10,7 @@
 		EXPORT  OS_ASM_Enable_Interrupts
         EXPORT  SysTick_Handler
 		EXPORT  OS_Start	
+		IMPORT  OS_Schedular
 			
 			
 OS_ASM_Disable_Interrupts 
@@ -26,9 +27,13 @@ SysTick_Handler                ; 1) Saves R0-R3,R12,LR,PC,PSR
     LDR     R0, =OSRunningThreadPtr         ; 4) R0=pointer to RunPt, old thread
     LDR     R1, [R0]           ;    R1 = RunPt
     STR     SP, [R1]           ; 5) Save SP into TCB
-    LDR     R1, [R1,#4]        ; 6) R1 = RunPt->next
-    STR     R1, [R0]           ;    RunPt = R1
-    LDR     SP, [R1]           ; 7) new thread SP; SP = RunPt->sp;
+    ;LDR     R1, [R1,#4]        ; 6) R1 = RunPt->next
+    ;STR     R1, [R0]           ;    RunPt = R1
+    PUSH    {R0,LR}
+	BL      OS_Schedular
+	POP     {R0,LR}
+	LDR     R1,[R0]
+	LDR     SP, [R1]           ; 7) new thread SP; SP = RunPt->sp;
     POP     {R4-R11}           ; 8) restore regs r4-11
     CPSIE   I                  ; 9) tasks run with interrupts enabled
     BX      LR                 ; 10) restore R0-R3,R12,LR,PC,PSR

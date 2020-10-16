@@ -152,10 +152,25 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>sem</ItemText>
+          <ItemText>data</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>mailSendSemaphore</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>mailAckSemaphore</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>mail</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
           <WinNumber>1</WinNumber>
           <ItemText>SemaphoreCount</ItemText>
         </Ww>
@@ -202,13 +217,6 @@
       <pszMrulep></pszMrulep>
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
-      <LogicAnalyzers>
-        <Wi>
-          <IntNumber>0</IntNumber>
-          <FirstString>\\RoundRobinRtos\main.c\sem</FirstString>
-          <SecondString>FF00000000000000000000000000E0FFFFFFEF41000000000000000000000000000000005C5C526F756E64526F62696E52746F735C6D61696E2E635C73656D00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000F03F100000000000000000000000000000000000000044080000</SecondString>
-        </Wi>
-      </LogicAnalyzers>
     </TargetOption>
   </Target>
 
